@@ -1,12 +1,12 @@
 name: 03-workslow-runner
- 
- on: push
- 
- jobs:
-     ubuntu-echo:
-     runs-on: ubuntu-latest
-     steps: 
-         -name: Show os
-          run: |
-           echo "This job is running on ubuntu runner"
-           echo  "Runner Os : $RUNNER_OS"
+
+on: push
+
+jobs:
+  ubuntu-echo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show os
+        run: |
+          echo "This job is running on ubuntu runner"
+          echo "Runner Os: $RUNNER_OS"
