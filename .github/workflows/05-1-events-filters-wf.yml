@@ -1,0 +1,17 @@
+name: 05-1-filters-activity-types
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+    branches:
+      - master
+
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo message
+        run: |
+          echo "Whenever the pull request is opened and base branch is master"
