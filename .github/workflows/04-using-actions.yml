@@ -20,7 +20,7 @@ jobs:
 
       - name: Install Dependencies
         run: npm ci
-        working-directory: 04-using-actions
+        working-directory: 04-using-actions/my-react-app
 
 
 
