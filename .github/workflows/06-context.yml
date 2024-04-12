@@ -12,4 +12,4 @@ jobs :
          echo "Ref:  ${{github.ref}}" 
          echo "SHA:  ${{github.sha}}" 
          echo "Actions ${{github.action}}"
-         echo "workflow ${{github.actiworkflow}}"
+         echo "workflow ${{github.activeworkflow}}"
