@@ -1,0 +1,25 @@
+name : 07-using-expressions
+
+on : 
+  push :
+  workflow_dispatch :
+    inputs:
+     debug :
+       types :
+       default : false
+jobs :
+  echo : 
+    runs-on : ubuntu-latest
+    steps:
+      - name : [debug] Print start-up data 
+        if: ${{inputs.debug}}
+        run: |
+         echo "Triggered by ${{github.event_name}}"
+         echo "Branch : ${{ github.ref }}"
+         echo  "Commit SHA ${{runner.os}}"
+      - name : "[debug] Print when triggered from master"
+        if:${}{ inputs.debug && github.ref=='refs/heads/master'}}
+        run: echo "I was triggered from master"
+      - name :Greeting
+        run : "Hello World"
+    
