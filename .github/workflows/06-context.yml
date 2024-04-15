@@ -40,4 +40,4 @@ jobs:
       - name: Print Env variables 
         run: |
           echo "Variable Value : ${{ env.MY_WORKFLOW_VAR }}"
-          echo "Overwritten  Value : ${{ vars.MY_OVERWRITTEN_VAR }}"
+          echo "Overwritten  Value : ${{ env.MY_OVERWRITTEN_VAR }}"
