@@ -7,10 +7,16 @@ on:
       debug:
         type: boolean
         default: false
+env :
+  MY_WORKFLOW_VAR : "workflow"
+  MY_OVERWRITTEN_VAR : "WORKFLOW"
 
 jobs:        
   echo-data:
     runs-on: ubuntu-latest
+    env :
+         MY_JOB_VAR : 'job'
+          MY_OVERWRITTEN_VAR : 'job'
     steps:
       - name: Display Information
         run: |
@@ -19,5 +25,23 @@ jobs:
           echo "SHA: ${{ github.sha }}" 
           echo "Actions: ${{ github.action }}"
           echo "Workflow: ${{ github.workflow }}"
+      
+      - name : Retrive variable
+         run: |
+           echo "Variable Value : ${{vars.MY_VAR}}"
+      - name : Print env Variables
+         env : MY_OVERWRITTEN_VAR="job"
+         run : 
+           echo "Variable Value : ${{vars.MY_VAR}}"
+           echo "Variable Value : ${{vars.MY_OVERWRITTEN_VAR}}"
+       - name : Print Env variables 
+         run : |
+           echo "Variable Value : ${{vars.MY_VAR}}"
+           echo "Variable Value : ${{vars.MY_OVERWRITTEN_VAR}}"
+         
+
+      
+
+    
 
 
