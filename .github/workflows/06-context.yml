@@ -27,15 +27,16 @@ jobs:
           echo "Workflow: ${{ github.workflow }}"
       
       - name : Retrive variable
-         run: |
+        run : |
            echo "Variable Value : ${{vars.MY_VAR}}"
       - name : Print env Variables
-         env : MY_OVERWRITTEN_VAR="job"
-         run : 
-           echo "Variable Value : ${{vars.MY_VAR}}"
-           echo "Variable Value : ${{vars.MY_OVERWRITTEN_VAR}}"
-       - name : Print Env variables 
-         run : |
+        env : 
+                   MY_OVERWRITTEN_VAR : 'step'
+        run : |
+          echo "Variable Value : ${{vars.MY_VAR}}"
+          echo "overwritten  Value : ${{vars.MY_OVERWRITTEN_VAR}}"
+      - name : Print Env variables 
+        run : |
            echo "Variable Value : ${{vars.MY_VAR}}"
            echo "Variable Value : ${{vars.MY_OVERWRITTEN_VAR}}"
          
