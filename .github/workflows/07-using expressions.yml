@@ -6,7 +6,7 @@ on :
   workflow_dispatch :
     inputs:
      debug :
-       type : string
+       type : boolean
        default : false
 jobs :
   echo : 
