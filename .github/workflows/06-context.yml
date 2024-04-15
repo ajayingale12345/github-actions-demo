@@ -1,5 +1,6 @@
-name: 06 - Contexts
-run-name: 06 - Contexts | DEBUG - $ {{ inputs.debug }}
+name: 06-context
+
+run-name:  06-context | DEBUG - ${{inputs.debug}}
 
 on:
   workflow_dispatch:
