@@ -7,7 +7,7 @@ on :
 jobs:
   echo1:
    runs-on : ubuntu-latest
-    steps :
+   steps:
     - name: Failing step
       run: exit 1 
     - name : I will be Skipped
