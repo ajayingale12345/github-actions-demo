@@ -9,6 +9,16 @@ jobs:
    runs-on : ubuntu-latest
 
    steps:
+    - name : Print PR title
+      run: echo "${{github.event.pull_request.title}}"
+    - name : Print PR titles
+      run : |
+        cat << EOF 
+        ${{ toJSON(github.event.pull_request_labels)}}
+        EOF
+    - name: Bug Fix
+       if: ${{!cancelled() && contains(github.event.pull_request.title, 'fix')}}
+       run: echo "I am bug fix"
     - name : Sleep WF
       run :  sleep 20
 
