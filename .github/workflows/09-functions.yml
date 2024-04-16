@@ -14,11 +14,11 @@ jobs:
     - name : Print PR titles
       run : |
         cat << EOF 
-        ${{ toJSON(github.event.pull_request_labels)}}
+        ${{ toJSON(github.event.pull_request.labels) }}
         EOF
     - name: Bug Fix
-       if: ${{!cancelled() && contains(github.event.pull_request.title, 'fix')}}
-       run: echo "I am bug fix"
+      if: ${{!cancelled() && contains(github.event.pull_request.title, 'fix')}}
+      run: echo "I am bug fix"
     - name : Sleep WF
       run :  sleep 20
 
