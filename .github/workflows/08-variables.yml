@@ -1,0 +1,33 @@
+name : 08-variables
+env: 
+  WORKFLOW_VAR : "This is workflow level environment variable"
+on :
+  push :
+  workflow_dispatch :
+
+jobs :
+   echo :
+     runs-on : ubuntu-latest
+     env : 
+      JOB_VAR : "This  env at Job Level"
+      OVERWRITTEN : "I am Over written at job "
+     steps : 
+      - name : Print environment variable
+        env :
+          STEP_VAR : "This is Step level Environment variable"
+          STEP_VAR2 : "This is another step level environment variable"
+        run: |
+         echo "Step env variable : ${{env.STEP_VAR}}"
+         echo "Step env variable2 : $env.STEP_VAR2"
+         echo "Job env variable : ${{env.JOB_VAR}}"
+         echo "Workflow  env variable : ${{env.WORKFLOW_VAR}}"
+         echo "OverWitten  env variable : ${{env.OVERWRITTEN}}"
+        
+      - name : This is Overwritten 
+        env :
+         OVERWRITTEN : "I am Over written at job "
+        run : |
+         echo "OverWitten  env variable : ${{env.OVERWRITTEN}}"
+        
+        
+
