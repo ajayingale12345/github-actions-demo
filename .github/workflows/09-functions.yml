@@ -21,6 +21,6 @@ on :
       if: ${{!cancelled ()}}
       run : echo "I will Always print unless work flow is cancelled"
 
-    -name : I will execute when cancelled
+    -name : I will execute when cancelled workflow
      if: $ {{cancelled() }}   
      run : I will always  print ,when the workflow is cancelled
