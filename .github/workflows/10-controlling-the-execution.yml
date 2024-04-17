@@ -17,6 +17,7 @@ jobs:
 
   unit-test:
     runs-on: ubuntu-latest
+    continue-on-error: true
     steps:
       - name: Failing tests
         if: ${{ !inputs.pass-unit-tests }}
