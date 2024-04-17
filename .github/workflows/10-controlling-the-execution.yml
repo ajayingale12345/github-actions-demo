@@ -1,8 +1,8 @@
-name :10-controlling the execution flow
-on :
-workflow_dispatch :
-     inputs:
-      pass-unit-tests:
+name: 10-controlling the execution flow
+on:
+     workflow_dispatch :
+      inputs:
+       pass-unit-tests:
         type: boolean
         description: Weather the unit test pass or fail
         default: true
