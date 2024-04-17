@@ -13,7 +13,7 @@ on:
         description : Which environment workflow will target
 
     tag:
-      type: choices
+      type: choice
       options:
         - v1
         - v2
@@ -25,7 +25,8 @@ jobs:
     runs-on : ubuntu-latest
     steps:
       -  name: build
-         run : echo " Building from tag  ${{ inputs.tag }"
+         run : |
+          echo " Building from tag  ${{ inputs.tag }}"
       
   deploy :
     runs-on : ubuntu-latest
