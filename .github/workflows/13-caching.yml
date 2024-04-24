@@ -16,7 +16,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Setup node
-        uses: actions/setup-node@3
+        uses: actions/setup-node@v3
         with:
           node-version: '18.x'
       - name: Install dependencies
