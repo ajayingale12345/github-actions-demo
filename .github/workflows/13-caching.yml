@@ -28,7 +28,14 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{inputs.node-version}}
+      - name: Download cached dependancies
+        uses: actions/cache@v3
+        id : cache
+        with:
+          path: 13-caching/template/node_modules
+          key: deep-node-modules -${{hashfiles('13-caching/template/package-lock.json')}}
       - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
       - name: Testing
         run: npm run test
