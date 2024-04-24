@@ -4,8 +4,16 @@ on:
   workflow_dispatch:
     inputs:
       use-cache:
+        description: "Weather to execute cache step"
         type: boolean
         default: true
+      node-version:
+        type: choice
+        options:
+            - '18.x'
+            - '20.x'
+           
+           
 jobs:
   build:
     runs-on: ubuntu-latest
