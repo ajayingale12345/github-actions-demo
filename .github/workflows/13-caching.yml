@@ -1,0 +1,32 @@
+name : 13-caching
+on :
+   push:
+   workflow_dispatch:
+     inputs:
+       use-cache:
+         description :
+         type: boolean
+         default: true
+jobs:
+  build:
+    runs-on : ubuntu-latest
+    defaults:
+       run :
+         working-directory:13-caching/template
+    steps:
+      - name : Checkout code
+        uses: actions/checkout@v4
+      - name: Setup node
+        uses: actions/setup-node@3
+        with: 
+          node-version:'20.x'
+
+      - name: Install dependancies
+         run: npm ci
+      - name: Testing 
+         run : npm run test
+      - name: building
+         run : npm run build
+      - name : Deploying 
+         run: echo "Deploying run to non prod"
+
