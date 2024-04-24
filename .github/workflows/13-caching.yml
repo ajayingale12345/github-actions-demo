@@ -19,7 +19,7 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@3
         with: 
-          node-version:'20.x'
+          node-version:'18.x'
 
       - name: Install dependancies
          run: npm ci
