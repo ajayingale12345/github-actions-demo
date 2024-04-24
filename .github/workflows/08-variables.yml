@@ -2,7 +2,7 @@ name : 08-variables
 env: 
   WORKFLOW_VAR : "This is workflow level environment variable"
 on :
-  push :
+
   workflow_dispatch :
 
 jobs :
