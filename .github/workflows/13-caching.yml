@@ -32,7 +32,7 @@ jobs:
           node-version: ${{ inputs.node-version }}
       - name: Calculate Cache-key
         id: cache-key
-        run: echo "CACHE-KEY=deep-node-modules-${{ hashfiles('13-caching/template/package-lock.json') }}" >> "$GITHUB_OUTPUT"
+        run: echo "CACHE_KEY=deep-node-modules-${{ hashfiles('13-caching/template/package-lock.json') }}" >> "$GITHUB_OUTPUT"
       - name: Download cached dependencies
         uses: actions/cache@v3
         id: cache
