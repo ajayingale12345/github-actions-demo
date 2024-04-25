@@ -18,9 +18,9 @@ on:
 jobs:
   install-deps:
   runs-on: ubuntu-latest
-    default:
-      run:
-        working-directory: 13-caching/template
+  defaults :
+  run:
+  working-directory: 13-caching/template
     outputs:
       deps-cache-key:${{steps.cache-key.outputs.CACHE_KEY}}
     steps:
