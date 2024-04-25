@@ -18,7 +18,7 @@ on:
 jobs:
   install-deps:
   runs-on: ubuntu-latest
-    defaults:
+    default:
       run:
         working-directory: 13-caching/template
     outputs:
