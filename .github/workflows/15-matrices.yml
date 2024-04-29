@@ -39,7 +39,7 @@ jobs:
   
   include-example:
     runs-on: ubuntu-latest
-    stretegy:
+    strategy:
       matrix:
       color: [red,green]
       shape: [circle,square]
