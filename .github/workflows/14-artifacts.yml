@@ -1,0 +1,55 @@
+name: 14-artifacts
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  test-builds:
+   runs-on: ubuntu-latest
+   defaults:
+      run:
+          working-directory: 14-artifacts/template
+   steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+              node-version : '20.x'
+      - name: Download cached dependencies
+        uses: actions/cache@v3
+        id: cache
+        with:
+          path: 14-artifcts/template/node_modules
+          key: deep-node-modules-${{hashFiles('14-artifcts/template/package-lock.json')}}
+      - name: Install Dependancies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci
+      - name: Unit test
+        run: npm run test 
+      - name: Build Code
+        run: npm run build
+      - name: upload build fiels
+        uses: actions/upload-art ifact@v3
+        with:
+           name: app
+           path: 14-artifcts/template/build
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download build Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: app
+          path:  build
+      - name : Show Structure
+        run   : ls -R
+        
+        
+
+      
+
+
+
+  
