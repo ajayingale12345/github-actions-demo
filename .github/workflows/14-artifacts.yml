@@ -37,6 +37,7 @@ jobs:
            path: 14-artifcts/template/build
   deploy:
     runs-on: ubuntu-latest
+    needs: test-builds
     steps:
       - name: Download build Artifacts
         uses: actions/download-artifact@v3
