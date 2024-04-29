@@ -8,7 +8,7 @@ jobs:
     name: ${{ matrix.os }}-${{ matrix.node-version }}
     runs-on: ubuntu-latest
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         node-version: [18.x, 20.x, 21.x]
         os: 
@@ -31,7 +31,7 @@ jobs:
       - name: Performs some tests
         run:
          echo "Running Tests on OS ${{ matrix.os }} and Node Version ${{ matrix.node-version }}"
-         sleep 15
+         
       - name : Upload test results
         run: echo  "Uploading test results"
         
