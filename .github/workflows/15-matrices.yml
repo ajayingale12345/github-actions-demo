@@ -36,4 +36,19 @@ jobs:
          sleep 10
       - name : Upload test results
         run: echo  "Uploading test results"
-        
+  
+  include-example:
+    runs-on: ubuntu-latest
+    stretegy:
+      matrix:
+      color: [red,green]
+      shape: [circle,square]
+      size:   [small,large]
+      includes:
+        - color: red
+          shape: triangle
+
+    steps:
+      - name: Dummy Step
+        run : echo "${{matrix.color}}-{{matrix.shape}}-${{matrix.size}}"
+
