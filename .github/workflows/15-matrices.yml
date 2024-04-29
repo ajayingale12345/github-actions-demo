@@ -8,7 +8,7 @@ jobs:
     name: ${{ matrix.os }}-${{ matrix.node-version }}
     runs-on: ubuntu-latest
     strategy:
-   
+      fail-fast: true
       matrix:
         node-version: [18.x, 20.x, 21.x]
         os: 
@@ -18,7 +18,7 @@ jobs:
         - os: ubuntu-latest
           node-version: '16.x' 
         - os: ubuntu-latest
-          node-version: '21.x'
+          node-version: '18.x'
           tag: experimental
         
           
@@ -31,7 +31,7 @@ jobs:
         if: matrix.tag == 'experimental'
         run: exit 1
       - name: Performs some tests
-        run:
+        run: |
          echo "Running Tests on OS ${{ matrix.os }} and Node Version ${{ matrix.node-version }}"
          sleep 10
       - name : Upload test results
