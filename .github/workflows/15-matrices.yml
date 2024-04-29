@@ -15,11 +15,11 @@ jobs:
           - ubuntu-latest
           - windows-latest
         include:
-        - os: ubuntu-latest
-          node-version: '16.x' 
-        - os: ubuntu-latest
-          node-version: '18.x'
-          tag: experimental
+          - os: ubuntu-latest
+            node-version: '16.x' 
+          - os: ubuntu-latest
+            node-version: '18.x'
+            tag: experimental
         
           
     steps:
@@ -32,23 +32,22 @@ jobs:
         run: exit 1
       - name: Performs some tests
         run: |
-         echo "Running Tests on OS ${{ matrix.os }} and Node Version ${{ matrix.node-version }}"
-         sleep 10
-      - name : Upload test results
-        run: echo  "Uploading test results"
+          echo "Running Tests on OS ${{ matrix.os }} and Node Version ${{ matrix.node-version }}"
+          sleep 10
+      - name: Upload test results
+        run: echo "Uploading test results"
   
   include-example:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-      color: [red,green]
+        name: ${{ matrix.color }}-${{ matrix.shape }}-${{ matrix.size }}
+        runs-on: ubuntu-latest
+           strategy:
+             matrix:
+             color: [red,green]
       shape: [circle,square]
-      size:   [small,large]
+      size: [small,large]
       includes:
         - color: red
           shape: triangle
-
-    steps:
-      - name: Dummy Step
-        run : echo "${{matrix.color}}-{{matrix.shape}}-${{matrix.size}}"
-
+  steps:
+    - name: Dummy Step
+      run: echo "${{ matrix.color }}-${{ matrix.shape }}-${{ matrix.size }}"
