@@ -3,9 +3,7 @@ name: 14-artifacts
 on:
   push:
   workflow_dispatch:
-env:
-     build-artifact-key: app-${{ github.sha }}
-     test-coverage-key: test-coverage-${{ github.sha }}
+
 jobs:
   test-builds:
    runs-on: ubuntu-latest
@@ -18,7 +16,7 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v3
         with:
-              node-version : '20.x'
+          node-version:'20.x'
       - name: Download cached dependencies
         uses: actions/cache@v3
         id: cache
@@ -29,27 +27,23 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
       - name: Unit test
-        run: npm run test  -- --coverage
-      - name: Upload test results
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ env.test-coverage-key }}
-          path: 14-artifacts/template/coverage
-      - name: Build code
+        run: npm run test 
+      
+      - name: Build Code
         run: npm run build
-      - name: Upload build files
-        uses: actions/upload-artifact@v4
+      - name: upload build fiels
+        uses: actions/upload-art ifact@v3
         with:
-          name: ${{ env.build-artifact-key }}
-          path: 14-artifacts/template/build
-  deploy:
+           name: app
+           path: 14-artifcts/template/build
+      
+ deploy:
     runs-on: ubuntu-latest
-    needs: test-builds
     steps:
       - name: Download build Artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v3
         with:
-          name:  ${{ env.build-artifact-key }}
+          name: app
           path:  build
       - name : Show Structure
         run   : ls -R
