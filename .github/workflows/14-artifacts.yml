@@ -1,7 +1,7 @@
 name: 14-artifacts
 
 on:
-  push:
+
   workflow_dispatch:
 env:
      build-artifact-key: app-${{ github.sha }}
