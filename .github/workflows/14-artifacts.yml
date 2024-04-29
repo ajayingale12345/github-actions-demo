@@ -34,14 +34,14 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ${{ env.test-coverage-key }}
-          path: 14-artifacts/react-app/coverage
+          path: 14-artifacts/template/coverage
       - name: Build code
         run: npm run build
       - name: Upload build files
         uses: actions/upload-artifact@v4
         with:
           name: ${{ env.build-artifact-key }}
-          path: 14-artifacts/react-app/build
+          path: 14-artifacts/template/build
   deploy:
     runs-on: ubuntu-latest
     needs: test-builds
