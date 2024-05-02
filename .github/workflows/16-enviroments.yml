@@ -12,7 +12,7 @@ jobs:
        runs-on: ubuntu-latest
        environment: ${{inputs.target-env}}
        env: 
-          my-env-value: ${{ vars.MY_ENV_VALUE || 'default value '}}
+          my-env-value: ${{ vars.MY_PROD_VARIABLE || 'default value '}}
 
        steps: 
           - name: Echo vars
