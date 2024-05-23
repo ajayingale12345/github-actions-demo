@@ -1,0 +1,29 @@
+name: 17- custom Actions-COmposite
+
+on:
+  workflow_dispatch:
+env: 
+    working-directory: 17-custom-actions/react-app
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    default:
+       run:
+          working-directory: ${{env.working-directory}}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup node and Npm Dependancies
+       uses: ./.github/actions/composite-cache-deps
+       with:
+         node-version: 20.x
+         working-dir: ${{env.working-directory}}
+      
+      - name : Test
+       run: npm run test
+       working-directory: ${{env.working-directory}}
+      
+      -name : Build
+       run: npm run build
+       working-directory: ${{env.working-directory}}
+        
