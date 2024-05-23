@@ -3,7 +3,7 @@ name: 17- custom Actions-Composite
 on:
   workflow_dispatch:
 env: 
-    working-directory: 13-caching/react-app
+    working-directory: 13-caching/template
 
 jobs:
   build:
