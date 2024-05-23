@@ -1,9 +1,9 @@
-name: 17- custom Actions-COmposite
+name: 17- custom Actions-Composite
 
 on:
   workflow_dispatch:
 env: 
-    working-directory: 17-custom-actions/react-app
+    working-directory: 13-caching/react-app
 
 jobs:
   build:
