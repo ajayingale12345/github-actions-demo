@@ -1,37 +1,36 @@
 name: 17- custom Actions-Composite
-run-name: 17- custom Actions-Composite | env - ${{ inputs.target-env }}
 
 on:
   workflow_dispatch:
-   inputs:
-    target-env:
-    description: Which environment to target for dependancy installation
-    types: choice
-    options:
-       - dev
-       - prod
-env: 
-    working-directory: 13-caching/template
+    inputs:
+      target-env:
+        description: Which environment to target for dependency installation
+        type: choice
+        options:
+          - dev
+          - prod
+
+env:
+  working-directory: 13-caching/template
 
 jobs:
   build:
     runs-on: ubuntu-latest
     defaults:
-       run:
-          working-directory: ${{env.working-directory}}
+      run:
+        working-directory: ${{ env.working-directory }}
     steps:
       - uses: actions/checkout@v4
-      - name: Setup node and Npm Dependancies
+      - name: Setup node and Npm Dependencies
         uses: ./.github/actions/composite-cache-deps
         with:
-         node-version: 20.x
-         working-dir: ${{env.working-directory}}
+          node-version: 20.x
+          working-dir: ${{ env.working-directory }}
       
-      - name : Test
+      - name: Test
         run: npm run test
-        working-directory: ${{env.working-directory}}
+        working-directory: ${{ env.working-directory }}
       
-      - name : Build
+      - name: Build
         run: npm run build
-        working-directory: ${{env.working-directory}}
-        
+        working-directory: ${{ env.working-directory }}
