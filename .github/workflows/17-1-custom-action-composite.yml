@@ -1,5 +1,5 @@
 name: 17- custom Actions-Composite
-# run-name: 17- custom Actions-Composite | env - ${{ inputs.target-env }}
+run-name: 17- custom Actions-Composite | env - ${{ inputs.target-env }}
 on:
   workflow_dispatch:
    inputs:
