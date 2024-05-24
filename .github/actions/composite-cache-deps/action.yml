@@ -9,6 +9,7 @@ inputs:
    description: The Directory of the Application
    defaults:
    required: false
+ target-env
 
 
 runs:
@@ -27,10 +28,17 @@ runs:
       key: node-module-${{ hashfiles( format('{0}/{1}',inputs.working-dir,'package-lock.json' )) }}
    
    - name: Install Dependancies
-     if: steps.cache.outputs.cache-hit != 'true'
-     run: npm ci
+     if: steps.cache.outputs.cache-hit != 'true' && inputs.target-env== 'dev'
+     run: ${{inputs.target-env=='dev' && 'npm ci' || 'npm ci --omit=dev'}}
      shell: bash
      working-directory: ${{inputs.working-dir}}
+
+   - name: Install Dependancies
+     if: steps.cache.outputs.cache-hit != 'true' && inputs.target-env== 'dev'
+     run: npm ci --omit=dev
+     shell: bash
+     working-directory: ${{inputs.working-dir}}
+
 
         
 
