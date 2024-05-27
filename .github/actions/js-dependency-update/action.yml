@@ -2,5 +2,5 @@ name: Update NPM dependencies
 description: Check there are updates to NPM and create a PR with the updated packages
 runs:
  using: node20
- master: index.js
+ main: index.js
  
