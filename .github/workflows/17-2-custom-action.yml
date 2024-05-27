@@ -1,0 +1,17 @@
+name: 17- custom Actions-JS
+
+on:
+  workflow_dispatch:
+   
+env:
+  working-directory: 13-caching/template
+
+jobs:
+  dependancy-update:
+    runs-on: ubuntu-latest
+   
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check for dependancy Updates
+        uses: ./.github/actions/js-dependency-update
+        
