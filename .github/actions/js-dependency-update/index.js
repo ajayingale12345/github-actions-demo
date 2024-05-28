@@ -27,7 +27,7 @@ async function run(){
 
     core.info(`[js-dependency-update]: Base branch is ${baseBranch}`);
     core.info(`[js-dependency-update] target branch is ${targetBranch}`);
-    core.info(`[js-dependency-update] working directory is ${baseBranch}`);
+    core.info(`[js-dependency-update] working directory is ${workingDir}`);
 
    await exec.exec('npm update', [] ,{
        cwd:workingDir
