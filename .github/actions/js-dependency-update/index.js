@@ -15,10 +15,10 @@ async function run(){
         core.error('Invalid base branch Name Branch Name should incluede characters,numbers,hypens,dots,forwardslash')
         return;
     }
-    if(!validateBranchName({branchName:targetBranch})){
-        core.error('Invalid target branch Name Branch Name should incluede characters,numbers,hypens,dots,forwardslash')
-        return;
-    }
+    // if(!validateBranchName({branchName:targetBranch})){
+    //     core.error('Invalid target branch Name Branch Name should incluede characters,numbers,hypens,dots,forwardslash')
+    //     return;
+    // }
     
     if(!validateDirectoryName({dirName:workingDir})){
         core.error('Invalid working directory Name directory Name should incluede characters,numbers,hypens,dots,forwardslash') 
