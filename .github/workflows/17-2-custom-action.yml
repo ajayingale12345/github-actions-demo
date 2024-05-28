@@ -7,7 +7,7 @@ on:
         type: string
         default: master
       target-branch:
-        type: string'
+        type: string
         default: update-dependencies
       working-dir:
         type: string
