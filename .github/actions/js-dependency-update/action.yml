@@ -1,5 +1,23 @@
 name: Update NPM dependencies
 description: Check there are updates to NPM and create a PR with the updated packages
+inputs:
+  base-branch: 
+    description: The branch is used as base for dependancy update checks
+    default: master
+    required: false
+  target-branch:
+    description: The branch from which the PR is created
+    default: update-dpendancies
+    required: false
+  working-directory:
+    description: The working directory of the project to check the dependancy updates'
+    required: true
+  gh-token: 
+    description: Authentyication token with repository access.Must have write access to contents and pull rquests
+    required: true
+  debug:
+    description: Weather the output debug messages to the console
+    default: false 
 runs:
  using: node20
  main: index.js
