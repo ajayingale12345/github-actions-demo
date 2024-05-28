@@ -1,8 +1,8 @@
 const core =require('@actions/core');
 const { exec } = require('@actions/exec');
 
-const validateBranchName=({branchName})=> /^[a-zA-Z0-9_\.\/]+$/.test(branchName);
-const validateDirectoryName=({dirName})=> /^[a-zA-Z0-9_\.\/]+$/.test(dirName);
+const validateBranchName=({branchName})=> /^[a-zA-Z0-9_\-\.\/]+$/.test(branchName);
+const validateDirectoryName=({dirName})=> /^[a-zA-Z0-9_\-\.\/]+$/.test(dirName);
 async function run(){
     const baseBranch = core.getInput('base-branch');
     const targetBranch = core.getInput('target-branch')
@@ -15,10 +15,10 @@ async function run(){
         core.error('Invalid base branch Name Branch Name should incluede characters,numbers,hypens,dots,forwardslash')
         return;
     }
-    // if(!validateBranchName({branchName:targetBranch})){
-    //     core.error('Invalid target branch Name Branch Name should incluede characters,numbers,hypens,dots,forwardslash')
-    //     return;
-    // }
+    if(!validateBranchName({branchName:targetBranch})){
+        core.error('Invalid target branch Name Branch Name should incluede characters,numbers,hypens,dots,forwardslash')
+        return;
+    }
     
     if(!validateDirectoryName({dirName:workingDir})){
         core.error('Invalid working directory Name directory Name should incluede characters,numbers,hypens,dots,forwardslash') 
